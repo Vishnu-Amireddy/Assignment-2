@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-1-JS</title>
+</head>
+<body>
+    <label>Enter the Number:</label>
+    <input type="text" id="i1">
+    <p id="i2"></p>
+    <button onclick="reverse()">Click!</button>
+    <script>
+        function reverse(){
+            a=Number.parseInt(document.getElementById("i1").value);
+            rev=0;
+            while(a!=0){
+                rem=a%10;
+                rev=rev*10+rem;
+                a=Math.floor(a/10);
+            }
+            document.getElementById("i2").innerHTML="Reverse of the Number is "+ rev;
+        }
+
+    </script>
+    
+    
+</body>
+</html>

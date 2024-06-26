@@ -1,0 +1,114 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-5-JS</title>
+  </head>
+  <body>
+    <center>
+      <div>
+        <table border="0" cellspacing="10">
+          <tbody><tr>
+            <td style="float: right">Name:</td>
+            <td>
+              <input type="text" id="name">
+              <span class="name-invalid" style="margin-left: 20px"></span>
+            </td>
+          </tr>
+          <tr>
+            <td style="float: right">Email:</td>
+            <td>
+              <input type="email" id="email">
+              <span class="email-invalid" style="margin-left: 20px"></span>
+            </td>
+          </tr>
+          <tr>
+            <td style="float: right">Website:</td>
+            <td>
+              <input type="text" id="website">
+              <span class="url-invalid" style="margin-left: 20px"></span>
+            </td>
+          </tr>
+          <tr>
+            <td style="float: right">Message:</td>
+            <td>
+              <textarea name="message" id="message" cols="25" rows="5"></textarea>
+              <span class="message-invalid" style="margin-left: 20px; position: relative; top: -70px"></span>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit">Submit</button>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+    </center>
+    <script>
+      document.querySelector("button").addEventListener("click", function () {
+        var flag = 0;
+        var validRegex =
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (document.querySelector("#name").value == "") {
+          flag = 1;
+          document.querySelector("#name").style.borderColor = "red";
+          document.querySelector("#name").style.borderWidth = "3px";
+          document.querySelector(".name-invalid").innerHTML =
+            "This field is required";
+          document.querySelector(".name-invalid").style.color = "red";
+        }
+
+        if (!document.querySelector("#email").value.match(validRegex)) {
+          flag = 1;
+          document.querySelector("#email").style.borderColor = "red";
+          document.querySelector("#email").style.borderWidth = "3px";
+          document.querySelector(".email-invalid").innerHTML =
+            "A valid email address is required";
+          document.querySelector(".email-invalid").style.color = "red";
+        }
+
+        const isValidUrl = (urlString) => {
+          var inputElement = document.createElement("input");
+          inputElement.type = "url";
+          inputElement.value = urlString;
+
+          if (!inputElement.checkValidity()) {
+            return false;
+          } else {
+            return true;
+          }
+        };
+        if (document.querySelector("#website").value == "") {
+          flag = 1;
+          document.querySelector("#website").style.borderColor = "red";
+          document.querySelector("#website").style.borderWidth = "3px";
+          document.querySelector(".url-invalid").innerHTML =
+            "This field is required";
+          document.querySelector(".url-invalid").style.color = "red";
+        } else if (!isValidUrl(document.querySelector("#website").value)) {
+          flag = 1;
+          document.querySelector("#website").style.borderColor = "red";
+          document.querySelector("#website").style.borderWidth = "3px";
+          document.querySelector(".url-invalid").innerHTML =
+            "A valid url is required";
+          document.querySelector(".url-invalid").style.color = "red";
+        }
+
+        if (document.querySelector("#message").value == "") {
+          flag = 1;
+          document.querySelector("#message").style.borderColor = "red";
+          document.querySelector("#message").style.borderWidth = "3px";
+          document.querySelector(".message-invalid").innerHTML =
+            "This field is required";
+          document.querySelector(".message-invalid").style.color = "red";
+        }
+
+        if (flag == 0) {
+          window.location.href = document.querySelector("#website").value;
+        }
+      });
+    </script>
+  
+</body>
+</html>
